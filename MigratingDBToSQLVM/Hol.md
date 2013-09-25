@@ -18,14 +18,15 @@ _Choosing a base image from the gallery_
 
 In this hands-on lab, you will learn how to:
 
-- Provision a virtual machine with SQL Server 2012 and Windows Server 2012 (SQL Server 2012 SP1 Enterprise on WS 2012)
-- Use Remote Desktop to start SQL Server Management Studio and import the bacpac file
-- Configure **Named Pipes** on SQL Server 2012
-- Open port 1433 on the virtual machine to allow incoming connections to SQL Server 2012.
-- Configure the Firewall to allow incoming connections
-- Enable SQL Server Authentication and add a new login user
+- Provision a virtual machine with **SQL Server 2012** and **Windows Server 2012 (SQL Server 2012 SP1 Enterprise on WS 2012)**
+- Use **Remote Desktop** to start **SQL Server Management Studio** and import the **bacpac** file
+- Configure **Named Pipes** on **SQL Server Express 2012**
+- Open port 1433 on the virtual machine to allow incoming connections to **SQL Server 2012**.
+- Configure the **Firewall** to allow incoming connections
+- Enable **SQL Server Authentication** and add a new **login user**
 - Test the connectivity to the virtual machine using various tools
-- Create a connection string that can be used to leverage the Windows Azure SQL Virtual Machine we create
+- Create a connection string that can be used to leverage the **Windows Azure SQL Virtual Machine** we create
+
 
 <a name="Prerequisites"></a>
 ### Prerequisites ###
@@ -34,7 +35,8 @@ The following is required to complete this hands-on lab:
 
 - A Windows Azure subscription
 - A bacpac file in Windows Azure storage (previous lab)
-- Visual Studio 2012 Ultimate or Visual Studio 2013 Ultimate RC
+- Visual Studio 2013 Ultimate RC
+- SQL Server 2012 Express
 
 <a name="Setup"></a>
 ### Setup ###
@@ -96,7 +98,15 @@ In this section, you will log into the Windows Azure Portal and create an Window
 
 	_Configuring the Virtual Machine_
 
-1. We are now ready to begin the importing of the **Bacpac** file that was created in Exercise 1. To accomplish this task, we will need to use **Remote Desktop** to connect to the **Virtual machine** directly. From there we will start **SQL Server 2012 Management Studio** to perform the actual import process. For this step, click the **Connect** option from the bottom menu bar. 
+<a name="GettingStartedTask1"></a>
+#### Task 2 – Remote Desktop into Virtual Machine####
+
+The goal of task 2 is to configure the virtual machine and the underlying database. You will import the **bacpac** file. You may need to re-visit the Windows Azure portal to get the details of your storage account where the **bacpac** file resides.
+
+
+ to support incoming connections for client applications.
+
+1. We are now ready to begin the importing of the **Bacpac** file that was created in Task 1. To accomplish this task, we will need to use **Remote Desktop** to connect to the **Virtual machine** directly. From there we will start **SQL Server 2012 Management Studio** to perform the actual import process. For this step, click the **Connect** option from the bottom menu bar. 
 
 	![Importing into Windows Azure SQL Virtual Machine](Images/image007.jpg?raw=true)
 
@@ -192,6 +202,11 @@ In this section, you will log into the Windows Azure Portal and create an Window
 
 	_Importing Data-tier Application_
 
+<a name="GettingStartedTask1"></a>
+#### Task 3 – Verifying a correct import of the bacpac file ####
+
+The goal of task 3 is to verify that the database imported correctly. You enter some basic queries to do so.
+
 1. You can now verify that all the database structures, as well as the data is available. Right mouse click on the **Customers table** and create a select **Query** in a **New query editor window**. A simple query can verify if all the appropriate data structures and data are made it through the import process. 
 
 	![Verifying the import with **SQL Server 2012 Management Studio**](Images/image023.jpg?raw=true)
@@ -203,6 +218,16 @@ In this section, you will log into the Windows Azure Portal and create an Window
 	![Verifying the import with **SQL Server 2012 Management Studio**](Images/image024.jpg?raw=true)
 
 	_Verifying the import with **SQL Server 2012 Management Studio**_
+
+<a name="GettingStartedTask1"></a>
+####Task 4 – Configuring Named Pipes, and opening up TCP port 1433####
+
+Your database and virtual machine is not accessible by client applications. This lab is about enabling **Named Pipes** and port **1433**.
+
+**Named-pipes** provide a way for inter-process communication to occur among processes running on the same machine. What named pipes give you is a way to send your data without having the performance penalty of involving the network stack.
+
+SQL Server is a Winsock application that communicates over TCP/IP by using the sockets network library. SQL Server listens for incoming connections on a particular port. The default port for SQL Server is **1433**. The port doesn't need to be **1433**, but **1433** is the official Internet Assigned Number Authority (IANA) socket number for SQL Server.
+
 
 1. Let’s begin by starting **SQL Server Configuration Manager**. 
 
@@ -233,6 +258,18 @@ In this section, you will log into the Windows Azure Portal and create an Window
 	![Opening up **TCP Port 1433**](Images/image029.jpg?raw=true)
 
 	_Opening up **TCP Port 1433**_
+<a name="GettingStartedTask1"></a>
+
+#### Task 5 – Enabling Connections by Configuring Windows Firewall ####
+
+Inbound rules explicitly allow, or explicitly block, inbound network traffic that matches the criteria in the rule. 
+
+For example, you can configure a rule to explicitly allow traffic secured by IPsec for Remote Desktop through the firewall, but block the same traffic if it is not secured by IPsec. 
+
+When Windows is first installed, all unsolicited inbound traffic is blocked. 
+
+To allow a certain type of unsolicited inbound traffic, you must create an inbound rule that describes that traffic. For example, if you want to run a Web server, then you must create a rule that allows unsolicited inbound network traffic on TCP port 1433. 
+
 
 1. From the **Start** menu, choose **Windows Firewall with Advanced...**. 
 
@@ -276,11 +313,21 @@ In this section, you will log into the Windows Azure Portal and create an Window
 
 	_Adding an Inbound Rule_
 
-1. We also want to use **SQL Server Authentication**, in addition to **Windoows Integrated Authentication**. 
+<a name="GettingStartedTask1"></a>
+#### Task 6 – Enabling SQL Server Authentication and Adding a User ####
 
-	![In this next section we need to add a **New Login** so we can connect to the database using a connection string and not use the built-in **Administrator** account. ](Images/x?raw=true)
+During setup, you must select an authentication mode for the Database Engine. 
 
-	_In this next section we need to add a **New Login** so we can connect to the database using a connection string and not use the built-in **Administrator** account. _
+There are two possible modes: Windows Authentication mode and mixed mode. Windows Authentication mode enables Windows Authentication and disables SQL Server Authentication. Mixed mode enables both Windows Authentication and SQL Server Authentication. Windows Authentication is always available and cannot be disabled.
+
+When using SQL Server Authentication, logins are created in SQL Server that are not based on Windows user accounts. 
+
+Both the user name and the password are created by using SQL Server and stored in SQL Server. 
+
+Users connecting using SQL Server Authentication must provide their credentials (login and password) every time that they connect. 
+
+When using SQL Server Authentication, you must set strong passwords for all SQL Server accounts. For strong password guidelines, see http://technet.microsoft.com/en-us/library/ms161962.aspx.
+
 
 1. As previously stated, because our connection string will leverage SQL Server standard security, we will need to create a new login user that leverages **SQL Server Authentication**. Right mouse click **Security | Logins | New Login**. 
 
@@ -300,11 +347,11 @@ In this section, you will log into the Windows Azure Portal and create an Window
 
 	_Adding a **New Login** and **SQL Server Authentication**_
 
-1. In the final step we will need to enable **SQL Server Authentication**. This can be done by choosing **properties** after right mouse clicking on **SQL Server** and the **object Explorer**, as seen below. 
+1. In the final step we will need to enable **SQL Server Authentication**. This can be done by choosing **properties** after right mouse clicking on **SQL Server** and the **Object Explorer**, as seen below. 
 
-	![Restarting SQL Server](Images/image040.jpg?raw=true)
+	![Enable **SQL Server Authentication**](Images/image040.jpg?raw=true)
 
-	_Restarting SQL Server_
+	_Enable **SQL Server Authentication**_
 
 1. On the left side of the dialog box choose **Security** and be sure that under server authentication you have chosen**SQL Server and Windows authentication mode**. Click **OK** when finished. 
 
@@ -324,7 +371,14 @@ In this section, you will log into the Windows Azure Portal and create an Window
 
 	_Verifying the restart_
 
-1. Start **Visual Studio 2012 Ultimate or Visual Studio 2013 Ultimate RC**. From the **View** menu, choose **Server Explorer**. 
+<a name="GettingStartedTask1"></a>
+#### Task 7 – Verifying Connectivity ###
+
+This final task is to verify that we can indeed connect to the database from the outside world (from client web applications).
+
+
+
+1. Start **Visual Studio 2013 Ultimate RC**. From the **View** menu, choose **Server Explorer**. 
 
 	![Starting **Server Explorer** in **Visual Studio 2012 Ultimate or Visual Studio 2013 Ultimate RC**](Images/image044.jpg?raw=true)
 
@@ -353,5 +407,17 @@ In this section, you will log into the Windows Azure Portal and create an Window
 	![Creating a query](Images/image047.jpg?raw=true)
 
 	_Creating a query_
+
+
+<a name="summary" />
+## Summary ##
+
+In this lab, you saw how to configure a Windows Azure SQL  Virtual Machine. Specifically you learned:
+
+- How to use the Windows Azure Gallery to quickly provision a virtual machine
+- How to import a bacpac file to load a database into the Windows Azure SQL VM
+- How to configure named pipes, tcp ports, and firewall settings to allow outside access to the database
+- How to validate connectivity to the virtual machine
+
 
 
