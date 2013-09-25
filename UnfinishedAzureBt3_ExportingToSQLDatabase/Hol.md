@@ -1,21 +1,31 @@
 ﻿<a name="Title"></a>
-# Setting up an Azure Virtual Machine For Developers with Visual Studio 2013 Ultimate and SQL Server 2012 Express #
+# Migrating an On-Premises SQL Server 2012 Database to Windows Azure SQL Database #
 
 ---
 <a name="Overview"></a>
 ## Overview ##
 
-This next section is about getting set up with Azure Virtual Machine that includes Visual Studio 2013 RC and SQL Server 2012 Express. This will be the starting point for other labs.
+This next lab is about migrating an on-premises database to the cloud. As the diagram below suggests, there are two ways to support SQL Server databases in the public cloud.
 
-In this hands-on lab, you will explore the basic elements of setting up an **Windows Azure Virtual Machine** using the Windows Azure Gallery for Vitual Machines. Once a basic virtual machine has been setup, we will add SQL Server 2012 Express Edition.
+The concept is simple - how do you take an on-premises database and move it to the cloud. You have two choices. In this lab we will move the database to Windows Azure SQL Database.
+
+![SQL Database](Images/highlevel.png?raw=true)
+
+_SQL Database_
+
+Because Windows Azure SQL Database is indeed a database as a service, there are some real advantages. First, it can be fantastically economical—some companies have reduced their database costs by more than 90 percent by using Windows Azure SQL Database. Second, it provides self-managing capabilities, enabling organi- zations to provision data services for applications throughout the enterprise without adding to the support burden of the central IT department. Third, the service replicates three copies of your data, and in the case of a hardware failure, it provides automatic failover. 
+
+But there are limitations. The maximum database size is 150GB, though this can be increased through  sharding (the horizontal partitioning of data). This approach is also subject to more latency issues, due to the fact that it runs on a shared infrastructure in the Microsoft  datacenter. Another drawback is that you must expect transient faults and program your code accordingly. Finally, Windows Azure SQL Database represents a subset of SQL Server, meaning that some features, such as XML, system stored procedures, distributed transactions, synonyms, CLR procedures, Full Text Search and the ability  to have linked servers are not supported. Because of these limitations, migrating to Windows Azure SQL Database may not work for some scenarios. 
 
 <a name="Objectives"></a>
 ### Objectives ###
 
 In this hands-on lab, you will learn how to:
 
-- Create a Virtual Machine with Visual Studio 2013 RC from the Windows Azure Management Portal
-- Download and install SQL Server 2012 Express
+- Create a **Server** virtual machine to host our Windows Azure SQL Database
+- Open IP addresses on the **Server** virtual machine to allow for incoming connections
+- Use SQL Server Management Studio 2012 to export an on-premises database to the **Server** you previously created
+- Validate the migration using the portal tooling and SQL Server Management Studio
 
 <a name="Prerequisites"></a>
 ### Prerequisites ###
@@ -23,6 +33,8 @@ In this hands-on lab, you will learn how to:
 The following is required to complete this hands-on lab:
 
 - A Windows Azure subscription
+- An on-premises SQL Server 2012 Management Studio
+- MVC4Sample database
 
 <a name="Setup"></a>
 ### Setup ###
@@ -30,6 +42,7 @@ The following is required to complete this hands-on lab:
 In order to execute the exercises in this hands-on lab you need to set up your environment.
 
 1. Start by logging into the **Windows Azure Portal** (http://manage.windowsazure.com).
+1. Complete the previous lab of configuration **SQL Server 2012 Management Studio (Express)**
 
 
 ---
@@ -187,10 +200,13 @@ In this section, you will log into the Windows Azure Portal and create an Azure 
 
 	_Getting the connection string_
 
-1. you now have all the needed information to connect up to your Windows Azure SQL database. 
+1. You now have all the needed information to connect up to your Windows Azure SQL database. 
 
 	![Viewing all available connection strings](Images/image024.png?raw=true)
 
 	_Viewing all available connection strings_
 
+## Summary ##
+
+In this lab, you have learned how to create ASP.NET web applications that connect to virtual machines running in Windows Azure. First, created a virtual machine with SQL Server 2012 installed using the Windows Azure Management Portal and configured it to allow external connections. Then, you created a simple ASP.NET MVC 4 web application using Entity Framework that accessed the database in the SQL Server virtual machine. The web application took advantage of Full-Text Search features in SQL Server 2012 to search for contact data.  You completed the lab by deploying the application to Windows Azure Web Sites using Visual Studio.
 
