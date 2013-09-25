@@ -5,17 +5,21 @@
 <a name="Overview"></a>
 ## Overview ##
 
-This next section is about getting set up with Azure Virtual Machine that includes Visual Studio 2013 RC and SQL Server 2012 Express. This will be the starting point for other labs.
+This next section is about getting set up with Azure Virtual Machine that includes **Visual Studio 2013 Ultimate RC** and **SQL Server 2012 Express**. This will be the starting point for other labs.
 
-In this hands-on lab, you will explore the basic elements of setting up an **Windows Azure Virtual Machine** using the Windows Azure Gallery for Vitual Machines. Once a basic virtual machine has been setup, we will add SQL Server 2012 Express Edition.
+In this hands-on lab, you will explore the basic elements of setting up an **Windows Azure Virtual Machine** using the Windows Azure Gallery for Vitual Machines. Once a basic virtual machine has been setup, we will add **SQL Server 2012 Express**.
+
+The goal is that you will have an equivalent infrastructure that a developer would need. You will have **Visual Studio 2013 Ultimate RC** and **SQL Server 2012 Express** that you can use to work with an existing MVC4 Sample application. 
+
+You can use this virtual machine instead of your own, in the event you don't have **Visual Studio 2013 Ultimate RC**.
 
 <a name="Objectives"></a>
 ### Objectives ###
 
 In this hands-on lab, you will learn how to:
 
-- Create a Virtual Machine with Visual Studio 2013 RC from the Windows Azure Management Portal
-- Download and install SQL Server 2012 Express
+- Create a Virtual Machine with **Visual Studio 2013 Ultimate RC** from the Windows Azure Management Portal
+- Download and install **SQL Server 2012 Express**
 
 <a name="Prerequisites"></a>
 ### Prerequisites ###
@@ -39,12 +43,12 @@ In order to execute the exercises in this hands-on lab you need to set up your e
 This hands-on lab includes the following exercises:
 
 - [Getting Started: Creating an Azure Virtual Machine using the Windows Azure Virtual Image Gallery](#GettingStarted)
-- [Exercise 1: Downloading and installing SQL Server 2012 Express](#Exercise1)
+- [Exercise 1: Downloading and installing **SQL Server 2012 Express**](#Exercise1)
 
 <a name="GettingStarted"></a>
 ### Getting Started: Creating an MVC 4 Application using Entity Framework Code First ###
 
-In this section, you will log into the Windows Azure Portal and create an Azure Virtual Machine using the Windows Azure Gallery. 
+In this section, will connect to the virtual machine using **Remote Desktop**. You will configure **SQL Server 2012 Express** so that the Virtual Machine will have both **Visual Studio 2013 Ultimate RC** and **SQL Server 2012 Express**.
 
 <a name="GettingStartedTask1"></a>
 #### Task 1 – Creating an Azure Virtual Machine using the Windows Azure Virtual Image Gallery ####
@@ -67,9 +71,9 @@ In this section, you will log into the Windows Azure Portal and create an Azure 
  
 1. In the **Virtual Machine image Selection** page, click **Platform Images** on the left menu and select the **Visual Studio Ultimate 2013 RC** from the list. Click the arrow to continue.	
 
-	![Creating a new Virtual Machine With Visual Studio Ultimate 2013 RC](images/image006.png?raw=true)
+	![Creating a new Virtual Machine With **Visual Studio 2013 Ultimate RC**](images/image006.png?raw=true)
 
-	_Selecting Visual Studio 2013 Ultimate 2013 RC_
+	_Selecting **Visual Studio 2013 Ultimate RC**_
 
 1. The next arrow is located in the lower right corner of the portal screen.
 
@@ -114,9 +118,9 @@ In this section, you will log into the Windows Azure Portal and create an Azure 
 
 In this section, you will log into the Windows Azure Portal and create an Azure Virtual Machine using the Windows Azure Gallery. 
 
-#### Task 1 – Configuring Visual Studio 2013 RC and SQL Server 2012 Express ####
+#### Task 1 – Configuring Visual Studio Ultimate 2013 RC and **SQL Server 2012 Express** ####
 
-You will now connect to the Virtual Machine and configure it to run both **Visual Studio 2013 Ultimate RC** and **SQL Server 2013 Express**.
+You will now connect to the Virtual Machine and configure it to run both **Visual Studio 2013 Ultimate RC** and **SQL Server 2012 Express**.
 
 You will also download and install software, such as **SQL Server 2012 Express Management Studio**.
 
@@ -237,17 +241,17 @@ The next section if for downloading and installing **SQL Setup 2012 Express Mana
 
 	_Enabling .NET Framework setup_
 
-1. You will now prepare to download **SQL Server 2012 Express** tooling. Use Internet Explorer to navigate to bing.com. Type in **sql server 2012 express download**. Click the official download link.
+1. You will now prepare to download **SQL Server 2012 Express** tooling. Use Internet Explorer to navigate to bing.com. Type in **SQL Server 2012 Express** download. Click the official download link.
 
-	![Finding SQL Server 2012 Express download](Images/image049.png?raw=true)
+	![Finding **SQL Server 2012 Express** download](Images/image049.png?raw=true)
 
-	_Finding SQL Server 2012 Express dowload_
+	_Finding **SQL Server 2012 Express** dowload_
 
 1. Click **Download** from the web page. There will be several options.
 
-	![Downloading SQL Server 2012 Express](Images/image051.png?raw=true)
+	![Downloading **SQL Server 2012 Express**](Images/image051.png?raw=true)
 
-	_Downloading SQL Server 2012 Express_
+	_Downloading **SQL Server 2012 Express**_
 
 1. A download windown will appear at the bottom of Internet Explorer. Select **Save As**. The file **SQLManagementStudio_x64_ENU.exe** will be downloaded to the **Downloads** folder.
 
@@ -259,7 +263,7 @@ The next section if for downloading and installing **SQL Setup 2012 Express Mana
 
 	![Navigating to the Downloads folder](Images/image055.png?raw=true)
 
-	_Navigating to the Downloads folder. Installing SQL Server 2012 Express Management Studio_
+	_Navigating to the Downloads folder. Installing **SQL Server 2012 Express** Management Studio_
 
 1. You select **New SQL Server stand-alone installation or add features to an existing installation**
 
@@ -303,4 +307,11 @@ The next section if for downloading and installing **SQL Setup 2012 Express Mana
 
 	_Final verification of success_
 
+
+
+<a name="Summary"></a>
+### Summary ###
+
+In this hands-on lab, you will learned how to provision a virtual machine that can be used for development purposes. The virtual machine contains **SQL Server 2012 Express** and **Visual Studio 2013 Ultimate RC**.
+	
 
