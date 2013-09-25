@@ -1,0 +1,214 @@
+Exercise 3 In this next section we will create a **virtual machine** tailored for **SQL Server**. We will then import the database, and similar fashion to the SQL database example previously demonstrated.  Windows Azure SQL Server Database VM Windows Azure SQL Server for VMs (IaaS) makes it possible for you to host your cluster in a Microsoft data center. The key advantage this public cloud-hosted option offers is a high level of compatibility with existing on-premises SQL Server installations. Because this option supports a full-featured version of SQL Server, you're able to leverage high-availability, transparent data encryption, auditing, business intelligence (analysis services and reporting services), distributed transactions, support for active directory (ADFS 2.0), and more. Moreover, you can build your own VM or leverage a template from the Windows Azure image gallery (described later). Finally, this offering allows you to build your own virtual private networks easily, bridging your cloud resources to your on-premises network and providing a seamless experience that blurs the lines between the massive Microsoft data centers and your internal servers.
+x
+x
+
+Creating a Windows Azure SQL Virtual Machine
+Return back to the **Windows Azure Portal**. To start select **virtual machines** from the left menu panel. Next, click the **+New** button in the lower left corner.
+Image001.png
+
+Choosing a base image from the gallery
+Next, select **Virtual Machine | From Gallery** from the portal. You will then be provided a list of virtual machine images to choose from. We are interested in SQL Server 2012 Sp1.
+Image002.png
+
+Selecting SQL Server 2012 SP1 Enterprise on WS 2012
+Notice that there are many versions of SQL Server available on various operating systems. Make the selection as seen below, **SQL Server 2012 SP1 Enterprise on WS 2012**.
+Image003.png
+
+Configuring the Virtual Machine
+This next screen allows you to specify a **virtual machine name**. You will need to choose a unique name that is not already chosen. This screen also allows you to specify the **machine size**. For testing purposes we recommend a **small size** as there won’t be much load for an individual developer. You will also need to specify a **username** and **password** that will be used to log into the machine. This will not be the same username and password for the web application. We will need to add a database user separately using **SQL Server Mangement Studio** in a future step.
+Image004.png
+
+Configuring the Virtual Machine
+You will also need to provide a **DNS name**, which represents the unique name of the server on the web. It also specify a **Region**, we should generally be the same **Region** as the applications that will be consuming the database to minimize latency.
+Image005.png
+
+Configuring the Virtual Machine
+No changes or modifications are needed for this final step in the virtual machine configuration.
+Image006.png
+
+Importing into Windows Azure SQL Virtual Machine
+We are now ready to begin the importing of the **Bacpac** file that was created in Exercise 1. To accomplish this task, we will need to use **Remote Desktop** to connect to the **Virtual machine** directly. From there we will start **SQL Server 2012 Mangement Studio** to perform the actual import process. For this step, click the **Connect** option from the bottom menu bar.
+Image007.png
+
+Opening a Remote Desktop Session
+A popup window will appear at the bottom of the browser window. Click on the **Open** button to start a remote desktop session. You will need to use the **Username** and **Password** specified when you created the **virtual machine** in the previous step.
+Image008.png
+
+Starting SQL Server 2012 Mangement Studio
+You are now remotely connected to the virtual machine you just created. The next step is to start SQL Server 2012 Mangement Studio.
+Image009.png
+
+Starting SQL Server 2012 Mangement Studio
+The **virtual machine** comes equipped with SQL Server 2012 Mangement Studio. Select from the **start menu** and launch it.
+Image010.png
+
+Starting SQL Server 2012 Mangement Studio
+It may take a few moments to load the first time.
+Image011.png
+
+Connecting to dataase with Windows Authentication
+You will be presented with the appropriate default parameters to connect to the database server. You don't need to enter anything.  Just click the **connect** button.
+Image012.png
+
+Importing a Data-tier Application
+We are now ready to import the data tier, which is really the **Bacpac** file that we had created earlier. As you recall, that file is sitting in **Windows Azure storage**. Right mouse click on **Databases** and select **Import Data Tier**.
+Image013.png
+
+Starting the import wizard
+The wizard will begin and you will be presented with various screens to import the database. Click **Next** on the **Import Data-tier Application Wizard**. 
+Image014.png
+
+Importing Data-tier Application
+Because the **Bacpac** file is sitting in **Windows Azure storage**, select the **radio button |  Import from Windows Azure**. At this point you should click **Connect,** assuming you have the storage account information. If you do not, the next steps will allow you to get that information. If you have the **Storage Account Name** and the **Primary Access Key**, you can skip past the portal help section in the next 2 steps.
+Image015.png
+
+Importing Data-tier Application
+The point of this step is to verify that you have not forgotten the details of the **Bacpac** file inside of **Windows Azure Storage**. You can return back to the **Windows Azure portal** and click **Storage** on the left menu. You should be able to easily identify the **Bacpac** file that you had created previously in an earlier exercise. Once you highlight the **Bacpac** file, you can select **Manage access keys** from the bottom of the screen. The access key will be needed for the import process in **SQL Server Mangement Studio**.
+Image016.png
+
+Importing Data-tier Application
+As explained previously, you may need the **primary access key**. When at the portal, note that you can now access the primary access key and copy it to the clipboard so that it can be used for the import within **SQL Server Mangement Studio** in this step. Notice you need to provide the **Storage Account Name** as well as the **Account Key**. Enter that information then enter **Connect**.
+Image017.png
+
+Importing Data-tier Application
+You should be able to select the **Container** name from the drop down combo box. Click **Next** to continue.
+Image018.png
+
+Importing Data-tier Application
+You will also be able to select the **file name** for the **Bacpac** file.
+Image019.png
+
+Importing Data-tier Application
+Accept the default values and click the **Next** button.
+Image020.png
+
+Importing Data-tier Application
+The import process is now complete. Click **Finish** to dismiss the import data tier wizard.
+Image021.png
+
+Importing Data-tier Application
+Verify that your import a successful and click **Close**.
+Image022.png
+
+Verifying the import with SQL Server Management Studio
+You can now verify that all the database structures, as well as the data is available. Right mouse click on the **Customers table** and create a select **Query** in a **New query editor window**. A simple query can verify if all the appropriate data structures and data are made it through the import process.
+Image023.png
+
+Verifying the import with SQL Server Management Studio
+Execute the query and verify that the correct data appears in the results pane below.
+Image024.png
+
+SQL Server is **locked down** by default. In order to access the database and the virtual machine, a number of tasks need to be completed. The first task is to **enable named pipes** in **SQL Server Configuration Manager**. You will then need to open up **TCP port 1433** to **allow connectivity** to the **virtual machine** from the outside world. Next, you will need to go to the **Windows firewall** and allow **inbound connections** on **port 1433.** A fourth task includes the need to **create a database user** for your **MVC4Sample database**. Finally, you will need to enable both **SQL Server** and **Windows authentication** mechanisms. 
+
+Starting SQL Server Configuration Manager
+Let’s begin by starting **SQL Server Configuration Manager**.
+Image025.png
+
+Changing SQL Server Configuration Management
+Once **SQL Server Configuration Manager** is open, navigate to the section on the left called **SQL Server network configuration | Protocols for MSSQLSERVER**. Be sure to enable **Named Pipes**. You can close **SQL Server Configuration Manager** now.
+Image026.png
+
+The virtual machine must have an endpoint to listen for incoming TCP communication. This Windows Azure configuration step directs incoming TCP port traffic to a TCP port that is accessible to the virtual machine. 
+Each endpoint defined for a virtual machine is assigned a public and private port for communication. The private port is defined for setting up communication rules on the virtual machine and the public port is used by the Windows Azure load balancer to communicate with the virtual machine from external sources. 
+x
+
+Opening up TCP Port 1433
+We now need to return back to the portal and open up TCP port 1433 the virtual machine. Start by selecting the **virtual machine** previously created, and click the **->** to the right of the virtual machine name (**DBMvcSample**).
+Image027.png
+
+Opening up TCP Port 1433
+From the top level menu select **Endpoints**, then click the **Add** button from the bottom of the portal window.
+Image028.png
+
+Opening up TCP Port 1433
+The dialog box is for you select the **Name, Protocol, the Public and Private ports**. Fill in the dialog box as seen below. As mentioned previously, for security purposes, it might make sense to use another lesser-known port then **1433**.
+Image029.png
+
+To allow internet applications to access the SQL Server instance in the virtual machine through the Windows Firewall, you must configure a firewall rule. To do this, you will need to add an Inbound Rule for the SQL Server requests in the Windows Firewall. 
+To do this, open Windows Firewall with Advance Security from Start | All Programs | Administrative Tools. Note: By default, Microsoft Windows enables the Windows Firewall, which closes port **1433** to prevent Internet computers from connecting to a default instance of SQL Server on any computer. 
+x
+
+Starting the Windows Firewall
+From the **Start** menu, choose **Windows Firewall with Advanced...**.
+Image030.png
+
+Adding an Inbound Rule
+Right mouse click on **Inbound Rules** and choose **New Rule**.
+Image031.png
+
+Adding an Inbound Rule
+The second radio button is **Port**, so select **Port** and click the **Next** button.
+Image032.png
+
+Adding an Inbound Rule
+Be sure that the rule applies to **TCP** ports, specifically port **1433,** as seen below.
+Image033.png
+
+Adding an Inbound Rule
+The action that we desire is to **Allow the Connection**. Then click **Next**.
+Image034.png
+
+Adding an Inbound Rule
+By default all three checkboxes are enabled. Do not change them and click **Next**.
+Image035.png
+
+Adding an Inbound Rule
+Provide a **Name** for the new **Inbound rule** that we just created and click **Finish**. You are now done configuring the Windows firewall to allow **Incoming TCP connections** on **Port 1433.**
+Image036.png
+
+In this next section we need to add a **New Login** so we can connect to the database using a connection string and not use the built-in **Administrator** account. 
+We also want to use **SQL Server Authentication**, in addition to **Windoows Integrated Authentication**.
+x
+
+Adding a **New Login** and **SQL Server Authentication**
+As previously stated, because our connection string will leverage SQL Server standard security, we will need to create a new login user that leverages **SQL Server Authentication**. Right mouse click **Security | Logins | New Login**.
+Image037.png
+
+Adding a **New Login** and **SQL Server Authentication**
+Enter a login name and remember what you indicated. It will be needed in the connection string later from our web application. In this example we will call the login name **TestUser**. De-select **Enforce password policy**.
+Image038.png
+
+Adding a **New Login** and **SQL Server Authentication**
+From the left side of the dialog box under **Select a Page**, click on **User Mapping**. Be sure to map **TestUser** to **MVC4Sample**. Make sure the **Default Schema** reads **db_owner**. Lower in the dialog box for **Database Role Membership**, select **db_owner** and **public**.
+Image039.png
+
+Restarting SQL Server
+In the final step we will need to enable **SQL Server Authentication**. This can be done by choosing **properties** after right mouse clicking on **SQL Server** and the **object Explorer**, as seen below.
+Image040.png
+
+Modifying Server Properties
+On the left side of the dialog box choose **Security** and be sure that under server authentication you have chosen**SQL Server and Windows authentication mode**. Click **OK** when finished.
+Image041.png
+
+Restarting SQL Server
+In order for all these changes take effect, you will need to restart the database. Right mouse click on **SQL Server** and choose **Restart**.
+Image042.png
+
+Verifying the restart
+Choose **Yes** from the pop-up dialog box to indicate that you do wish to restart the server.
+Image043.png
+
+At this point you have completed the SQL server virtual machine, including all necessary configuration changes to enable it to be available through a connection string from web-based or thick client applications.
+Based on the way the database was configured in this lab, the connection string would look like the one below. You would obviously need to make adjustments to this connection string based on the virtual machine name, and login user that you selected in previous steps.
+Data Source=dbmvcsample.cloudapp.net;Persist Security Info=True;User ID=TestUser;Password=***********
+
+Starting Server Explorer in Visual Studio
+Start Visual Studio 2013 Ultimate. From the **View** menu, choose **Server Explorer**.
+Image044.png
+
+Adding a database connection
+Right mouse click on **Data Connection** in **Server Explorer** and choose **Add Connection**
+Image044.png
+
+Choosing the data source
+Select **Microsoft SQL Server** and clilck **Continue**.
+Image045.png
+
+Adding the connection
+Type in the server name of the **Windows Azure SQL Virtual Machine** you created earlier. Yours will be different from **dbmvcsample.cloudapp.net**. Next select **Use SQL Server Authentication** and type in the **User name** and **Password**. Next, select **Selet or enter a database name** and you should be able to see **MVC4Sample**. Finally, click **Test Connection** to verify the database is available.
+Image046.png
+
+Creating a query
+Right mouse click on **Tables | Customers** and select **New Query**. Next, type in **select * from Customers**.
+Image047.png
+
