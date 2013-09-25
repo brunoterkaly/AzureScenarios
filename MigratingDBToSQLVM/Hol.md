@@ -1,21 +1,31 @@
 ﻿<a name="Title"></a>
-# Setting up an Azure Virtual Machine For Developers with Visual Studio 2013 Ultimate and SQL Server 2012 Express #
+# Migrating an On-Premises SQL Server 2012 Database to Windows Azure #
 
 ---
 <a name="Overview"></a>
 ## Overview ##
 
-This next section is about getting set up with Azure Virtual Machine that includes Visual Studio 2013 RC and SQL Server 2012 Express. This will be the starting point for other labs.
+This next section is about migrating on-premises SQL Server database to the public cloud.
 
-In this hands-on lab, you will explore the basic elements of setting up an **Windows Azure Virtual Machine** using the Windows Azure Gallery for Vitual Machines. Once a basic virtual machine has been setup, we will add SQL Server 2012 Express Edition.
+**Windows Azure SQL Server for VMs (IaaS)** makes it possible for you to host your cluster in a Microsoft datacenter. The key advantage this public  cloud-hosted option offers is a high level of compatibility with existing on-premises SQL Server installations. Because this  option supports a full-featured version of SQL Server, you’re able to leverage HA, transparent data encryption, auditing, business intelligence (BI) such as analysis services and reporting services, distributed transactions, support for active directory (Active Directory Federation Ser- vices, or AD FS 2.0), and more. Moreover, you can build your own VM or leverage a template from the Windows Azure image gallery (described later). Finally, this offering allows you to build your own virtual private networks (VPNs) easily, bridging your cloud resources to your on-premises network and providing a seamless experience that blurs the lines between the massive Microsoft  datacenters and your internal servers. 
+
+![Migrating a database to Windows Azure SQL Virtual Machine](Images/highlevel.png?raw=true)
+
+_Choosing a base image from the gallery_
 
 <a name="Objectives"></a>
 ### Objectives ###
 
 In this hands-on lab, you will learn how to:
 
-- Create a Virtual Machine with Visual Studio 2013 RC from the Windows Azure Management Portal
-- Download and install SQL Server 2012 Express
+- Provision a virtual machine with SQL Server 2012 and Windows Server 2012 (SQL Server 2012 SP1 Enterprise on WS 2012)
+- Use Remote Desktop to start SQL Server Management Studio and import the bacpac file
+- Configure **Named Pipes** on SQL Server 2012
+- Open port 1433 on the virtual machine to allow incoming connections to SQL Server 2012.
+- Configure the Firewall to allow incoming connections
+- Enable SQL Server Authentication and add a new login user
+- Test the connectivity to the virtual machine using various tools
+- Create a connection string that can be used to leverage the Windows Azure SQL Virtual Machine we create
 
 <a name="Prerequisites"></a>
 ### Prerequisites ###
@@ -23,13 +33,15 @@ In this hands-on lab, you will learn how to:
 The following is required to complete this hands-on lab:
 
 - A Windows Azure subscription
+- A bacpac file in Windows Azure storage (previous lab)
+- Visual Studio 2012 Ultimate or Visual Studio 2013 Ultimate RC
 
 <a name="Setup"></a>
 ### Setup ###
 
 In order to execute the exercises in this hands-on lab you need to set up your environment.
 
-1. Start by logging into the **Windows Azure Portal** (http://manage.windowsazure.com).
+1. Start by logging into the **Windows Azure Portal** (http://manage.windowsazure.com)
 
 
 ---
@@ -38,13 +50,12 @@ In order to execute the exercises in this hands-on lab you need to set up your e
 
 This hands-on lab includes the following exercises:
 
-- [Getting Started: Creating an Azure Virtual Machine using the Windows Azure Virtual Image Gallery](#GettingStarted)
-- [Exercise 1: Downloading and installing SQL Server 2012 Express](#Exercise1)
+- [Creating a Windows Azure SQL Virtual Machine and importing a database](#GettingStarted)
 
 <a name="GettingStarted"></a>
-### Getting Started: Creating an MVC 4 Application using Entity Framework Code First ###
+### Creating a Windows Azure SQL Virtual Machine and importing a database ###
 
-In this section, you will log into the Windows Azure Portal and create an Azure Virtual Machine using the Windows Azure Gallery. 
+In this section, you will log into the Windows Azure Portal and create an Windows Azure SQL Virtual Machine using the Windows Azure Gallery. 
 
 <a name="GettingStartedTask1"></a>
 #### Task 1 – Creating an Azure Virtual Machine using the Windows Azure Virtual Image Gallery ####
@@ -85,7 +96,7 @@ In this section, you will log into the Windows Azure Portal and create an Azure 
 
 	_Configuring the Virtual Machine_
 
-1. We are now ready to begin the importing of the **Bacpac** file that was created in Exercise 1. To accomplish this task, we will need to use **Remote Desktop** to connect to the **Virtual machine** directly. From there we will start **SQL Server 2012 Mangement Studio** to perform the actual import process. For this step, click the **Connect** option from the bottom menu bar. 
+1. We are now ready to begin the importing of the **Bacpac** file that was created in Exercise 1. To accomplish this task, we will need to use **Remote Desktop** to connect to the **Virtual machine** directly. From there we will start **SQL Server 2012 Management Studio** to perform the actual import process. For this step, click the **Connect** option from the bottom menu bar. 
 
 	![Importing into Windows Azure SQL Virtual Machine](Images/image007.jpg?raw=true)
 
@@ -97,23 +108,23 @@ In this section, you will log into the Windows Azure Portal and create an Azure 
 
 	_Opening a Remote Desktop Session_
 
-1. You are now remotely connected to the virtual machine you just created. The next step is to start SQL Server 2012 Mangement Studio. 
+1. You are now remotely connected to the virtual machine you just created. The next step is to start **SQL Server 2012 Management Studio**. 
 
-	![Starting SQL Server 2012 Mangement Studio](Images/image009.jpg?raw=true)
+	![Starting **SQL Server 2012 Management Studio**](Images/image009.jpg?raw=true)
 
-	_Starting SQL Server 2012 Mangement Studio_
+	_Starting **SQL Server 2012 Management Studio**_
 
-1. The **virtual machine** comes equipped with SQL Server 2012 Mangement Studio. Select from the **start menu** and launch it. 
+1. The **virtual machine** comes equipped with **SQL Server 2012 Management Studio**. Select from the **start menu** and launch it. 
 
-	![Starting SQL Server 2012 Mangement Studio](Images/image010.jpg?raw=true)
+	![Starting **SQL Server 2012 Management Studio**](Images/image010.jpg?raw=true)
 
-	_Starting SQL Server 2012 Mangement Studio_
+	_Starting **SQL Server 2012 Management Studio**_
 
 1. It may take a few moments to load the first time. 
 
-	![Starting SQL Server 2012 Mangement Studio](Images/image011.jpg?raw=true)
+	![Starting **SQL Server 2012 Management Studio**](Images/image011.jpg?raw=true)
 
-	_Starting SQL Server 2012 Mangement Studio_
+	_Starting **SQL Server 2012 Management Studio**_
 
 1. You will be presented with the appropriate default parameters to connect to the database server. You don't need to enter anything.  Just click the **connect** button. 
 
@@ -183,15 +194,15 @@ In this section, you will log into the Windows Azure Portal and create an Azure 
 
 1. You can now verify that all the database structures, as well as the data is available. Right mouse click on the **Customers table** and create a select **Query** in a **New query editor window**. A simple query can verify if all the appropriate data structures and data are made it through the import process. 
 
-	![Verifying the import with SQL Server Management Studio](Images/image023.jpg?raw=true)
+	![Verifying the import with **SQL Server 2012 Management Studio**](Images/image023.jpg?raw=true)
 
-	_Verifying the import with SQL Server Management Studio_
+	_Verifying the import with **SQL Server 2012 Management Studio**_
 
 1. Execute the query and verify that the correct data appears in the results pane below. 
 
-	![Verifying the import with SQL Server Management Studio](Images/image024.jpg?raw=true)
+	![Verifying the import with **SQL Server 2012 Management Studio**](Images/image024.jpg?raw=true)
 
-	_Verifying the import with SQL Server Management Studio_
+	_Verifying the import with **SQL Server 2012 Management Studio**_
 
 1. Let’s begin by starting **SQL Server Configuration Manager**. 
 
@@ -207,21 +218,21 @@ In this section, you will log into the Windows Azure Portal and create an Azure 
 
 1. We now need to return back to the portal and open up TCP port 1433 the virtual machine. Start by selecting the **virtual machine** previously created, and click the **->** to the right of the virtual machine name (**DBMvcSample**). 
 
-	![Opening up TCP Port 1433](Images/image027.jpg?raw=true)
+	![Opening up **TCP Port 1433**](Images/image027.jpg?raw=true)
 
-	_Opening up TCP Port 1433_
+	_Opening up **TCP Port 1433**_
 
 1. From the top level menu select **Endpoints**, then click the **Add** button from the bottom of the portal window. 
 
-	![Opening up TCP Port 1433](Images/image028.jpg?raw=true)
+	![Opening up **TCP Port 1433**](Images/image028.jpg?raw=true)
 
-	_Opening up TCP Port 1433_
+	_Opening up **TCP Port 1433**_
 
 1. The dialog box is for you select the **Name, Protocol, the Public and Private ports**. Fill in the dialog box as seen below. As mentioned previously, for security purposes, it might make sense to use another lesser-known port then **1433**. 
 
-	![Opening up TCP Port 1433](Images/image029.jpg?raw=true)
+	![Opening up **TCP Port 1433**](Images/image029.jpg?raw=true)
 
-	_Opening up TCP Port 1433_
+	_Opening up **TCP Port 1433**_
 
 1. From the **Start** menu, choose **Windows Firewall with Advanced...**. 
 
@@ -313,11 +324,11 @@ In this section, you will log into the Windows Azure Portal and create an Azure 
 
 	_Verifying the restart_
 
-1. Start Visual Studio 2013 Ultimate. From the **View** menu, choose **Server Explorer**. 
+1. Start **Visual Studio 2012 Ultimate or Visual Studio 2013 Ultimate RC**. From the **View** menu, choose **Server Explorer**. 
 
-	![Starting Server Explorer in Visual Studio](Images/image044.jpg?raw=true)
+	![Starting **Server Explorer** in **Visual Studio 2012 Ultimate or Visual Studio 2013 Ultimate RC**](Images/image044.jpg?raw=true)
 
-	_Starting Server Explorer in Visual Studio_
+	_Starting **Server Explorer** in **Visual Studio 2012 Ultimate or Visual Studio 2013 Ultimate RC**_
 
 1. Right mouse click on **Data Connection** in **Server Explorer** and choose **Add Connection** 
 
@@ -342,4 +353,5 @@ In this section, you will log into the Windows Azure Portal and create an Azure 
 	![Creating a query](Images/image047.jpg?raw=true)
 
 	_Creating a query_
+
 
