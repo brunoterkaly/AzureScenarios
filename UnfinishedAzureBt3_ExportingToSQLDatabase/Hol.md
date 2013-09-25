@@ -64,13 +64,13 @@ In this section, you will log into the Windows Azure Portal and create an Azure 
 
 1. On the left menu pane, select **SQL Databases**. You will see a list of existing databases. Toward the top you will see **Servers** as an option. Select **Servers**. 
 
-	![Creating a server to host your Windows Azure SQL Database](Images/image001.png?raw=true)
+	![Creating a server to host your **Windows Azure SQL Database**](Images/image001.png?raw=true)
 
 	_Creating a server to host your **Windows Azure SQL Database**_
 
 1. You will see a list of servers. You could simply get the name of an existing server or you can choose to click on the **Add** button on the lower menu bar. This will create an additional **server**. 
 
-	![Creating a server to host your Windows Azure SQL Database](Images/image002.png?raw=true)
+	![Creating a server to host your **Windows Azure SQL Database**](Images/image002.png?raw=true)
 
 	_Creating a server to host your **Windows Azure SQL Database**_
 
@@ -116,7 +116,7 @@ In this section, you will log into the Windows Azure Portal and create an Azure 
 
 	_Getting the full server name_
 
-1. Now that we have the **Server name**, we are ready to perform the migration using **SQL Server Management Studio**, which has the built-in tooling to perform the **migration process**. Login to your on-premises database server where you would like to do your migration **from**. 
+1. Now that we have the **Server name**, we are ready to perform the migration using **SQL Server Management Studio**, which has the built-in tooling to perform the **migration process**. Launch **SQL Server Management Studio** and login to your on-premises database server where you would like to do your migration **from**. 
 
 	![Migrating the on-premises database](Images/image010.png?raw=true)
 
@@ -164,7 +164,7 @@ In this section, you will log into the Windows Azure Portal and create an Azure 
 
 	_Confirming the migration at the Windows Azure Portal_
 
-1. Enter in your **login credentials**  and click on the **Logon"" button. 
+1. Enter in your **login credentials**  and click on the **Log on** button. 
 
 	![Logging In](Images/image018.png?raw=true)
 
@@ -176,31 +176,31 @@ In this section, you will log into the Windows Azure Portal and create an Azure 
 
 	_Verifying the existence of the customers table_
 
-1. Towards the top of the window you will see a **New Query** button. Click on it and type in a simple select query as seen below (**select * from customers**). Then click the **Run** menu item. You should be able to see data for the customers table. 
+1. Towards the top of the window you will see a **New Query** button. Click on it and type in a simple select query as seen below (**select * from customers**). Then click the **Run** menu item. You should be able to see data for the **customers table**. 
 
 	![Issuing a query](Images/image020.png?raw=true)
 
 	_Issuing a query_
 
-1. You can also connect to the **Windows Azure SQL Database** from any running instance of **SQL Server Management Studio**. You can use it to connect to **Windows Azure SQL Database**. **SQL Server Management Studio** is a familiar tool to most developers and can boost productivity tremendously.  Launch SQL Server management studio from any computer connected to the Internet. Click the **Connect button** on **Object Explorer**. as stated earlier in this lab, you will need the **Server Name** as well as the **Login Credentials** to connect to the cloud hosted instance of **Windows Azure SQL Database**. Click **Connect** when you have entered in this information. 
+1. You can also connect to the **Windows Azure SQL Database** from any running instance of **SQL Server Management Studio**. You can use it to connect to **Windows Azure SQL Database**. **SQL Server Management Studio** is a familiar tool to most developers and can boost productivity tremendously.  Launch **SQL Server Management Studio** from any computer connected to the Internet. Click the **Connect button** on **Object Explorer**. as stated earlier in this lab, you will need the **Server Name** as well as the **Login Credentials** to connect to the cloud hosted instance of **Windows Azure SQL Database**. Click **Connect** when you have entered in this information. 
 
 	![Using **SQL Server Management Studio**](Images/image021.png?raw=true)
 
 	_Using **SQL Server Management Studio**_
 
-1. You can write mouseclick on the customers table and select **Script Table As | Select To | New Query Editor Window**. Next, click on the **Execute** toolbar button at the top. You should see the same **customer** information as in the previous step. 
+1. You can right mouse click on the **customers** table and select **Script Table As | Select To | New Query Editor Window**. Next, click on the **Execute** toolbar button at the top. You should see the same **customer** information as in the previous step. 
 
 	![Entering the select query](Images/image022.png?raw=true)
 
 	_Entering the select query_
 
-1. The final step to this lab is to get the actual connection string that can be used by client applications. The Windows Azure portal gives this to you with just a simple mouse click. Return back to the **SQL database** selection at the **Windows Azure portal**. Note the selection at the bottom of the portal, **View SQL Database connection strings for ADO .Net, ODBC, PHP, and JDBC**. Click on it. 
+1. The final step to this lab is to get the actual **connection string** that can be used by client applications. The Windows Azure portal gives this to you with just a simple mouse click. Return back to the **SQL database** selection at the **Windows Azure portal**. Note the selection at the bottom of the portal, **View SQL Database connection strings for ADO .Net, ODBC, PHP, and JDBC**. Click on it. 
 
 	![Getting the connection string](Images/image023.png?raw=true)
 
 	_Getting the connection string_
 
-1. You now have all the needed information to connect up to your Windows Azure SQL database. 
+1. You now have all the needed information to connect up to your **Windows Azure SQL Database**. 
 
 	![Viewing all available connection strings](Images/image024.png?raw=true)
 
@@ -208,6 +208,8 @@ In this section, you will log into the Windows Azure Portal and create an Azure 
 
 ## Summary ##
 
-In this lab, you have learned how to create ASP.NET web applications that connect to virtual machines running in Windows Azure. First, created a virtual machine with SQL Server 2012 installed using the Windows Azure Management Portal and configured it to allow external connections. Then, you created a simple ASP.NET MVC 4 web application using Entity Framework that accessed the database in the SQL Server virtual machine. The web application took advantage of Full-Text Search features in SQL Server 2012 to search for contact data.  You completed the lab by deploying the application to Windows Azure Web Sites using Visual Studio.
+In this lab, you have learned how to migrate an on-premises database to **Windows Azure SQL Database**. The built in tooling inside of **SQL Server Management Studio** makes the process very easy.
+
+
 
 
