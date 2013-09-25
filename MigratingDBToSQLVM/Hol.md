@@ -1,5 +1,5 @@
 ﻿<a name="Title"></a>
-# Migrating an On-Premises SQL Server 2012 Database to Windows Azure #
+# Migrating an On-Premises SQL Server 2012 Database to Windows Azure Virtual Machine #
 
 ---
 <a name="Overview"></a>
