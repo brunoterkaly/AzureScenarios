@@ -376,8 +376,6 @@ When using SQL Server Authentication, you must set strong passwords for all SQL 
 
 This final task is to verify that we can indeed connect to the database from the outside world (from client web applications).
 
-
-
 1. Start **Visual Studio 2013 Ultimate RC**. From the **View** menu, choose **Server Explorer**. 
 
 	![Starting **Server Explorer** in **Visual Studio 2012 Ultimate or Visual Studio 2013 Ultimate RC**](Images/image044.jpg?raw=true)
@@ -408,6 +406,12 @@ This final task is to verify that we can indeed connect to the database from the
 
 	_Creating a query_
 
+
+<a name="GettingStartedTask1"></a>
+#### Task 8 – Viewing the connection string ###
+
+As a final note, this is what the connection string might look like. Your ***server name*** will be different however.
+Data Source=***dbmvcsample***.cloudapp.net;Initial Catalog=MVC4Sample;User ID=TestUser;Password=***********
 
 <a name="summary" />
 ## Summary ##
