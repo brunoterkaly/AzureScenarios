@@ -7,25 +7,25 @@
 
 This next lab is about migrating an on-premises database to the cloud. As the diagram below suggests, there are two ways to support SQL Server databases in the public cloud.
 
-The concept is simple - how do you take an on-premises database and move it to the cloud. You have two choices. In this lab we will move the database to Windows Azure SQL Database.
+The concept is simple - how do you take an on-premises database and move it to the cloud. You have two choices. In this lab we will move the database to **Windows Azure SQL Database**.
 
 ![SQL Database](Images/highlevel.png?raw=true)
 
 _SQL Database_
 
-Because Windows Azure SQL Database is indeed a database as a service, there are some real advantages. First, it can be fantastically economical—some companies have reduced their database costs by more than 90 percent by using Windows Azure SQL Database. Second, it provides self-managing capabilities, enabling organi- zations to provision data services for applications throughout the enterprise without adding to the support burden of the central IT department. Third, the service replicates three copies of your data, and in the case of a hardware failure, it provides automatic failover. 
+Because **Windows Azure SQL Database** is indeed a database as a service, there are some real advantages. First, it can be fantastically economical—some companies have reduced their database costs by more than 90 percent by using **Windows Azure SQL Database**. Second, it provides self-managing capabilities, enabling organi- zations to provision data services for applications throughout the enterprise without adding to the support burden of the central IT department. Third, the service replicates three copies of your data, and in the case of a hardware failure, it provides automatic failover. 
 
-But there are limitations. The maximum database size is 150GB, though this can be increased through  sharding (the horizontal partitioning of data). This approach is also subject to more latency issues, due to the fact that it runs on a shared infrastructure in the Microsoft  datacenter. Another drawback is that you must expect transient faults and program your code accordingly. Finally, Windows Azure SQL Database represents a subset of SQL Server, meaning that some features, such as XML, system stored procedures, distributed transactions, synonyms, CLR procedures, Full Text Search and the ability  to have linked servers are not supported. Because of these limitations, migrating to Windows Azure SQL Database may not work for some scenarios. 
+But there are limitations. The maximum database size is 150GB, though this can be increased through  sharding (the horizontal partitioning of data). This approach is also subject to more latency issues, due to the fact that it runs on a shared infrastructure in the Microsoft  datacenter. Another drawback is that you must expect transient faults and program your code accordingly. Finally, **Windows Azure SQL Database** represents a subset of SQL Server, meaning that some features, such as XML, system stored procedures, distributed transactions, synonyms, CLR procedures, Full Text Search and the ability  to have linked servers are not supported. Because of these limitations, migrating to **Windows Azure SQL Database** may not work for some scenarios. 
 
 <a name="Objectives"></a>
 ### Objectives ###
 
 In this hands-on lab, you will learn how to:
 
-- Create a **Server** virtual machine to host our Windows Azure SQL Database
+- Create a **Server**  to host our **Windows Azure SQL Database**
 - Open IP addresses on the **Server** virtual machine to allow for incoming connections
-- Use SQL Server Management Studio 2012 to export an on-premises database to the **Server** you previously created
-- Validate the migration using the portal tooling and SQL Server Management Studio
+- Use **SQL Server Management Studio** 2012 to export an on-premises database to the **Server** you previously created
+- Validate the migration using the portal tooling and **SQL Server Management Studio**
 
 <a name="Prerequisites"></a>
 ### Prerequisites ###
@@ -66,13 +66,13 @@ In this section, you will log into the Windows Azure Portal and create an Azure 
 
 	![Creating a server to host your Windows Azure SQL Database](Images/image001.png?raw=true)
 
-	_Creating a server to host your Windows Azure SQL Database_
+	_Creating a server to host your **Windows Azure SQL Database**_
 
 1. You will see a list of servers. You could simply get the name of an existing server or you can choose to click on the **Add** button on the lower menu bar. This will create an additional **server**. 
 
 	![Creating a server to host your Windows Azure SQL Database](Images/image002.png?raw=true)
 
-	_Creating a server to host your Windows Azure SQL Database_
+	_Creating a server to host your **Windows Azure SQL Database**_
 
 1. Before the **Server** is actually created, you will need to indicte the **Login Name**, **Login Password**, and the **Region**. You can optionally indicate, **Allow Windows Azure Services to access the server** - if you want to expose the server through TCP/IP to other servers in a Microsoft data center. 
 
@@ -134,7 +134,7 @@ In this section, you will log into the Windows Azure Portal and create an Azure 
 
 	_Migrating the on-premises database_
 
-1. You will now be asked for the **Server name, Login/Password**. Be sure to select **SQL Server Authentication**. You will need to recall all of this information duing the Windows Azure SQL Database Server creation process in earlier steps. 
+1. You will now be asked for the **Server name, Login/Password**. Be sure to select **SQL Server Authentication**. You will need to recall all of this information duing the **Windows Azure SQL Database** Server creation process in earlier steps. 
 
 	![Identifying the target database server in Windows Azure](Images/image013.png?raw=true)
 
@@ -146,7 +146,7 @@ In this section, you will log into the Windows Azure Portal and create an Azure 
 
 	_Deployment Settings_
 
-1. You have now finished specifying the details for the migration to Windows Azure SQL Database. Click **Finish** to start the actual and physical migration. 
+1. You have now finished specifying the details for the migration to **Windows Azure SQL Database**. Click **Finish** to start the actual and physical migration. 
 
 	![Viewing the summary information](Images/image015.png?raw=true)
 
@@ -182,11 +182,11 @@ In this section, you will log into the Windows Azure Portal and create an Azure 
 
 	_Issuing a query_
 
-1. You can also connect to the Windows Azure SQL Database from any running instance of SQL Server Management Studio. You can use it to connect to Windows Azure SQL Database. SQL Server Management Studio is a familiar tool to most developers and can boost productivity tremendously.  Launch SQL Server management studio from any computer connected to the Internet. Click the **Connect button** on **Object Explorer**. as stated earlier in this lab, you will need the **Server Name** as well as the **Login Credentials** to connect to the cloud hosted instance of Windows Azure SQL Database. Click **Connect** when you have entered in this information. 
+1. You can also connect to the **Windows Azure SQL Database** from any running instance of **SQL Server Management Studio**. You can use it to connect to **Windows Azure SQL Database**. **SQL Server Management Studio** is a familiar tool to most developers and can boost productivity tremendously.  Launch SQL Server management studio from any computer connected to the Internet. Click the **Connect button** on **Object Explorer**. as stated earlier in this lab, you will need the **Server Name** as well as the **Login Credentials** to connect to the cloud hosted instance of **Windows Azure SQL Database**. Click **Connect** when you have entered in this information. 
 
-	![Using SQL Server Management Studio](Images/image021.png?raw=true)
+	![Using **SQL Server Management Studio**](Images/image021.png?raw=true)
 
-	_Using SQL Server Management Studio_
+	_Using **SQL Server Management Studio**_
 
 1. You can write mouseclick on the customers table and select **Script Table As | Select To | New Query Editor Window**. Next, click on the **Execute** toolbar button at the top. You should see the same **customer** information as in the previous step. 
 
@@ -209,4 +209,5 @@ In this section, you will log into the Windows Azure Portal and create an Azure 
 ## Summary ##
 
 In this lab, you have learned how to create ASP.NET web applications that connect to virtual machines running in Windows Azure. First, created a virtual machine with SQL Server 2012 installed using the Windows Azure Management Portal and configured it to allow external connections. Then, you created a simple ASP.NET MVC 4 web application using Entity Framework that accessed the database in the SQL Server virtual machine. The web application took advantage of Full-Text Search features in SQL Server 2012 to search for contact data.  You completed the lab by deploying the application to Windows Azure Web Sites using Visual Studio.
+
 
