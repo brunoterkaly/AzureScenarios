@@ -245,7 +245,7 @@ The next section if for downloading and installing **SQL Setup 2012 Express Mana
 
 	![Finding **SQL Server 2012 Express** download](Images/image049.png?raw=true)
 
-	_Finding **SQL Server 2012 Express** dowload_
+	_Finding **SQL Server 2012 Express** download_
 
 1. Click **Download** from the web page. There will be several options.
 
@@ -253,7 +253,7 @@ The next section if for downloading and installing **SQL Setup 2012 Express Mana
 
 	_Downloading **SQL Server 2012 Express**_
 
-1. A download windown will appear at the bottom of Internet Explorer. Select **Save As**. The file **SQLManagementStudio_x64_ENU.exe** will be downloaded to the **Downloads** folder.
+1. A download windown will appear at the bottom of Internet Explorer. Select **Save As**. The file **SQL ManagementStudio_x64_ENU.exe** will be downloaded to the **Downloads** folder.
 
 	![Downloading SQLManagementStudio_x64_ENU.exe](Images/image053.png?raw=true)
 
@@ -277,7 +277,7 @@ The next section if for downloading and installing **SQL Setup 2012 Express Mana
 
 	_Setting up dialog box_
 
-1. Select **Add features to an existing instancce of SQL Server 2012**. Then click **Next**.
+1. Select **Add features to an existing instance of SQL Server 2012**. Then click **Next**.
 
 	![Adding features to an existing installation](Images/image061.png?raw=true)
 
@@ -285,7 +285,7 @@ The next section if for downloading and installing **SQL Setup 2012 Express Mana
 
 1. In the checkboxes below, select **Management Tools - Basic**
 
-	![Intalling the Management Tools](Images/image063.png?raw=true)
+	![Installing the Management Tools](Images/image063.png?raw=true)
 
 	_Intalling the Management Tools_
 
