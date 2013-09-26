@@ -1,11 +1,15 @@
 ﻿<a name="Title"></a>
-# Setting up an Azure Virtual Machine For Developers with Visual Studio 2013 Ultimate and SQL Server 2012 Express #
+# Exporting an On-Premises Database to Windows Azure Storage #
 
 ---
 <a name="Overview"></a>
 ## Overview ##
 
 This lab is about exporting the on-premises database as a **bacpac** file and storing the **bacpac** file in Windows Azure Storage as a blob.
+
+![Exporting to Windows Azure Storage](Images/highlevel.png?raw=true)
+
+_Exporting to Windows Azure Storage_
 
 Once you create the **bacpac** file, you can import into a **Windows Azure SQL Virtual Machine Database**.
 
@@ -83,5 +87,5 @@ This exercise is about creating a **bacpac** file and putting it in **Windows Az
 <a name="Summary"></a>
 
 ## Summary ##
-You have now successfully exported the **bacpac** file to **Windows Azure Storage**. You are now able to leverage this **blob** or **bacpac** file and import into both: (1) Windows Azure SQL VM, and (2) Windows Azure SQL Database.
+You have now successfully exported the **bacpac** file to **Windows Azure Storage**. You are now able to leverage this **blob** or **bacpac** file and import into Windows Azure SQL VM.
 
