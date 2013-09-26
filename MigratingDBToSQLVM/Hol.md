@@ -411,7 +411,16 @@ This final task is to verify that we can indeed connect to the database from the
 #### Task 8 – Viewing the connection string ###
 
 As a final note, this is what the connection string might look like. Your ***server name*** will be different however.
-Data Source=***dbmvcsample***.cloudapp.net;Initial Catalog=MVC4Sample;User ID=TestUser;Password=***********
+
+(Code Snippet - _Connection String_)
+
+````C#
+
+Data Source=dbmvcsample.cloudapp.net;
+Initial Catalog=MVC4Sample;
+User ID=TestUser;Password=***********
+
+````
 
 <a name="summary" />
 ## Summary ##

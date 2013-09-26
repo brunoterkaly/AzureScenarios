@@ -51,8 +51,7 @@ In order to execute the exercises in this hands-on lab you need to set up your e
 
 This hands-on lab includes the following exercises:
 
-- [Getting Started: Creating an Azure Virtual Machine using the Windows Azure Virtual Image Gallery](#GettingStarted)
-- [Exercise 1: Downloading and installing SQL Server 2012 Express](#Exercise1)
+- [Getting Started: How to migrate an on-premises database to Windows Azure SQL Database](#GettingStarted)
 
 <a name="GettingStarted"></a>
 ### Getting Started: Creating an MVC 4 Application using Entity Framework Code First ###
@@ -60,7 +59,7 @@ This hands-on lab includes the following exercises:
 In this section, you will log into the Windows Azure Portal and create an Azure Virtual Machine using the Windows Azure Gallery. 
 
 <a name="GettingStartedTask1"></a>
-#### Task 1 – Creating an Azure Virtual Machine using the Windows Azure Virtual Image Gallery ####
+#### Task 1 – Provisioning a Server in **Windows Azure SQL Virtual Machine** ####
 
 1. On the left menu pane, select **SQL Databases**. You will see a list of existing databases. Toward the top you will see **Servers** as an option. Select **Servers**. 
 
@@ -92,6 +91,18 @@ In this section, you will log into the Windows Azure Portal and create an Azure 
 
 	_Verifying server creation_
 
+<a name="GettingStartedTask1"></a>
+#### Task 2 – Configuring Allowed IP Access ###
+
+In this task you will return back to the **Windows Azure Portal** and configure the firewall for your **Windows Azure SQL Database**. The goal of this task is to configure **Windows Azure SQL Database** to detect the IP address used by a client trying to connect connection and accept accept the connection requests from the client.
+
+If client computers use dynamically assigned IP addresses, you must specify a range that is broad enough to include IP addresses assigned to computers in your network. Start with a narrow range, and then expand it only if you need to.
+
+You will enter a name for the firewall rule, such as the name of your computer or company.
+
+
+
+
 1. In this step you will be required to access the **Configure** menu near the top. It will allow you to enter a range of IP addresses that can have access to the server. One or more ranges can be added. Each range of IP addresses represents **allowed IP addresses** to access the server. This is a way to enforce some degree of security. It assumes that you know the potential IP addresses of clients connecting to your server. 
 
 	![Selecting the Configure Menu](Images/image006.png?raw=true)
@@ -109,6 +120,12 @@ In this section, you will log into the Windows Azure Portal and create an Azure 
 	![Adding Allowed IP addresses](Images/image008.png?raw=true)
 
 	_Adding Allowed IP addresses_
+
+<a name="GettingStartedTask1"></a>
+#### Task 3 – Deploying from On-Premises SQL Server to Windows Azure SQL Database ###
+
+In this task you use ##Microsoft SQL Server 2012 Express Management Studio ## to deploy the database to **Windows Azure SQL Database**. We will need the **Server Name** to accomplish this task. We created this server in a previous step.
+
 
 1. We will perform the migration to **Windows Azure SQL Database** from an on-premises database. But to do so, we need the **full address** of our **server** (the server for **Windows Azure SQL Database**). The name of the **Server** is **s9d2fjlu9s**. The full name is **s9d2fjlu9s.database.windows.net**. 
 
@@ -158,6 +175,13 @@ In this section, you will log into the Windows Azure Portal and create an Azure 
 
 	_Viewing the migration results_
 
+<a name="GettingStartedTask1"></a>
+#### Task 4 – Verifying our migration to Windows Azure SQL Database ###
+
+In this task you use the **Windows Azure Portal** as well as ##Microsoft SQL Server 2012 Express Management Studio ## to verify the successful migration of the database to **Windows Azure SQL Database**.
+
+
+
 1. Return back to the Windows Azure Portal. Click on **SQL databases** on the left pane. The list of databases should include **MVC4Sample**. Next, click on the **Manage** menu so that we can take a look inside the database at specific data structures, such as the **customers** table.  
 
 	![Confirming the migration at the Windows Azure Portal](Images/image017.png?raw=true)
@@ -193,6 +217,12 @@ In this section, you will log into the Windows Azure Portal and create an Azure 
 	![Entering the select query](Images/image022.png?raw=true)
 
 	_Entering the select query_
+
+<a name="GettingStartedTask1"></a>
+#### Task 4 – Getting the connection string to your Windows Azure SQL Database ###
+
+In this task you get the connection string to your newly created ##Windows Azure SQL Database##.
+
 
 1. The final step to this lab is to get the actual **connection string** that can be used by client applications. The Windows Azure portal gives this to you with just a simple mouse click. Return back to the **SQL database** selection at the **Windows Azure portal**. Note the selection at the bottom of the portal, **View SQL Database connection strings for ADO .Net, ODBC, PHP, and JDBC**. Click on it. 
 
