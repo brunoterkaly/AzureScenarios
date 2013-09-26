@@ -80,7 +80,7 @@ In this section, you will log into the Windows Azure Portal and create an Window
 
 	_Selecting SQL Server 2012 SP1 Enterprise on WS 2012_
 
-1. This next screen allows you to specify a **virtual machine name**. You will need to choose a unique name that is not already chosen. This screen also allows you to specify the **machine size**. For testing purposes we recommend a **small size** as there won’t be much load for an individual developer. You will also need to specify a **username** and **password** that will be used to log into the machine. This will not be the same username and password for the web application. We will need to add a database user separately using **SQL Server Mangement Studio** in a future step. 
+1. This next screen allows you to specify a **virtual machine name**. You will need to choose a unique name that is not already chosen. This screen also allows you to specify the **machine size**. For testing purposes we recommend a **small size** as there won’t be much load for an individual developer. You will also need to specify a **username** and **password** that will be used to log into the machine. This will not be the same username and password for the web application. We will need to add a database user separately using **SQL Server Management Studio** in a future step. 
 
 	![Configuring the Virtual Machine](Images/image004.jpg?raw=true)
 
@@ -138,7 +138,7 @@ The goal of task 2 is to configure the virtual machine and the underlying databa
 
 1. You will be presented with the appropriate default parameters to connect to the database server. You don't need to enter anything.  Just click the **connect** button. 
 
-	![Connecting to dataase with Windows Authentication](Images/image012.jpg?raw=true)
+	![Connecting to database with Windows Authentication](Images/image012.jpg?raw=true)
 
 	_Connecting to dataase with Windows Authentication_
 
@@ -353,7 +353,7 @@ When using SQL Server Authentication, you must set strong passwords for all SQL 
 
 	_Enable **SQL Server Authentication**_
 
-1. On the left side of the dialog box choose **Security** and be sure that under server authentication you have chosen**SQL Server and Windows authentication mode**. Click **OK** when finished. 
+1. On the left side of the dialog box choose **Security** and be sure that under server authentication you have chosen **SQL Server and Windows authentication mode**. Click **OK** when finished. 
 
 	![Modifying Server Properties](Images/image041.jpg?raw=true)
 
@@ -388,7 +388,7 @@ This final task is to verify that we can indeed connect to the database from the
 
 	_Adding a database connection_
 
-1. Select **Microsoft SQL Server** and clilck **Continue**. 
+1. Select **Microsoft SQL Server** and click **Continue**. 
 
 	![Choosing the data source](Images/image045.jpg?raw=true)
 

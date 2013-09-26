@@ -178,7 +178,7 @@ In this task you use ##Microsoft SQL Server 2012 Express Management Studio ## to
 <a name="GettingStartedTask1"></a>
 #### Task 4 – Verifying our migration to Windows Azure SQL Database ###
 
-In this task you use the **Windows Azure Portal** as well as ##Microsoft SQL Server 2012 Express Management Studio ## to verify the successful migration of the database to **Windows Azure SQL Database**.
+In this task you use the **Windows Azure Portal** as well as **Microsoft SQL Server 2012 Express Management Studio ** to verify the successful migration of the database to **Windows Azure SQL Database**.
 
 
 
