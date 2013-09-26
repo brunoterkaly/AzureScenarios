@@ -64,31 +64,31 @@ This lab plays an important role for 2 other labs. This lab is all about establi
 
 1. Login into the **Windows Azure Portal**. On the left menu pane, select **Storage**. In the lower left corner select **+New** to create a new **Storage Account**. 
 
-	![Creating a **Storage Account**](Images/Image001.jpg?raw=true)
+	![Creating a **Storage Account**](Images/image001.jpg?raw=true)
 
 	_Creating a **Storage Account**_
 
 1. From the screen below, select **Storage | Quick Create**. 
 
-	![Using Quick Create](Images/Image002.jpg?raw=true)
+	![Using Quick Create](Images/image002.jpg?raw=true)
 
 	_Using Quick Create_
 
 1. Storage accounts are publicly exposed REST endpoints. This means that content can be accessed with ordinary http access. Note that in the screen below we need to provide the first segment of the **URL**. Notice that we choose **bacpackincloud**. You will need to choose your own **URL**. Naturally, files can also be made private, accessible with only a security key. Each **Storage Account** can contain one or more containers. Inside of each container is where files can be placed. These files are also known as **Blobs**. In the next exercise we will export the on-premises database as a **bacpac file** as a **blob,** inside a **container,** inside a **storage account**. In summary, you will provide 2 things here: (1) **URL**; (2) **Data Center Location**.  Finally, hit the **Create Storage Account** button on the lower right. 
 
-	![Providing **Storage Account** Details](Images/Image003.jpg?raw=true)
+	![Providing **Storage Account** Details](Images/image003.jpg?raw=true)
 
 	_Providing **Storage Account** Details_
 
 1. It may take a few moments for the **Storage Account** to finish completion. 
 
-	![Waiting for the **Storage Account** to complete](Images/Image004.jpg?raw=true)
+	![Waiting for the **Storage Account** to complete](Images/image004.jpg?raw=true)
 
 	_Waiting for the **Storage Account** to complete_
 
 1. At the bottom of the screen you will see a button called, **Manage Access Keys**. You will then be provided a popup dialog box where you can choose to copy the **management key** to the clipboard. You will need the **management key** for a future step, so you may want to copy it to a text file somewhere for future reference. After you've copied it, click the **checkmark** to dismiss the dialog box. 
 
-	![Getting the **Management Access Keys (Primary Access Keys)**](Images/Image005.jpg?raw=true)
+	![Getting the **Management Access Keys (Primary Access Keys)**](Images/image005.jpg?raw=true)
 
 	_Getting the **Management Access Keys (Primary Access Keys)**_
 
