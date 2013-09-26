@@ -13,7 +13,7 @@ The concept is simple - how do you take an on-premises database and move it to t
 
 _SQL Database_
 
-Because **Windows Azure SQL Database** is indeed a database as a service, there are some real advantages. First, it can be fantastically economical—some companies have reduced their database costs by more than 90 percent by using **Windows Azure SQL Database**. Second, it provides self-managing capabilities, enabling organi- zations to provision data services for applications throughout the enterprise without adding to the support burden of the central IT department. Third, the service replicates three copies of your data, and in the case of a hardware failure, it provides automatic failover. 
+Because **Windows Azure SQL Database** is indeed a database as a service, there are some real advantages. First, it can be fantastically economical—some companies have reduced their database costs by more than 90 percent by using **Windows Azure SQL Database**. Second, it provides self-managing capabilities, enabling organizations to provision data services for applications throughout the enterprise without adding to the support burden of the central IT department. Third, the service replicates three copies of your data, and in the case of a hardware failure, it provides automatic failover. 
 
 But there are limitations. The maximum database size is 150GB, though this can be increased through  sharding (the horizontal partitioning of data). This approach is also subject to more latency issues, due to the fact that it runs on a shared infrastructure in the Microsoft  datacenter. Another drawback is that you must expect transient faults and program your code accordingly. Finally, **Windows Azure SQL Database** represents a subset of SQL Server, meaning that some features, such as XML, system stored procedures, distributed transactions, synonyms, CLR procedures, Full Text Search and the ability  to have linked servers are not supported. Because of these limitations, migrating to **Windows Azure SQL Database** may not work for some scenarios. 
 
@@ -73,7 +73,7 @@ In this section, you will log into the Windows Azure Portal and create an Azure 
 
 	_Creating a server to host your **Windows Azure SQL Database**_
 
-1. Before the **Server** is actually created, you will need to indicte the **Login Name**, **Login Password**, and the **Region**. You can optionally indicate, **Allow Windows Azure Services to access the server** - if you want to expose the server through TCP/IP to other servers in a Microsoft data center. 
+1. Before the **Server** is actually created, you will need to indicate the **Login Name**, **Login Password**, and the **Region**. You can optionally indicate, **Allow Windows Azure Services to access the server** - if you want to expose the server through TCP/IP to other servers in a Microsoft data center. 
 
 	![Specifying Login, and Region](Images/image003.png?raw=true)
 
@@ -151,13 +151,13 @@ In this task you use ##Microsoft SQL Server 2012 Express Management Studio ## to
 
 	_Migrating the on-premises database_
 
-1. You will now be asked for the **Server name, Login/Password**. Be sure to select **SQL Server Authentication**. You will need to recall all of this information duing the **Windows Azure SQL Database** Server creation process in earlier steps. 
+1. You will now be asked for the **Server name, Login/Password**. Be sure to select **SQL Server Authentication**. You will need to recall all of this information during the **Windows Azure SQL Database** Server creation process in earlier steps. 
 
 	![Identifying the target database server in Windows Azure](Images/image013.png?raw=true)
 
 	_Identifying the target database server in Windows Azure_
 
-1. Once you've finished **Connecting** to the target server for the migration, you are ready to enter some more information, such as **New database name, the edition ofSQL Database (SQL Azure is the old name, btw), and the maximum database size (5 GB)**. Click **Next** when you have entered in this information. 
+1. Once you've finished **Connecting** to the target server for the migration, you are ready to enter some more information, such as **New database name, the edition of SQL Database (SQL Azure is the old name, btw), and the maximum database size (5 GB)**. Click **Next** when you have entered in this information. 
 
 	![Deployment Settings](Images/image014.png?raw=true)
 
@@ -169,7 +169,7 @@ In this task you use ##Microsoft SQL Server 2012 Express Management Studio ## to
 
 	_Viewing the summary information_
 
-1.  everything goes as planned, you will see the **Operation Complete** dialogbox with the **Result** being **Success** for all activities. Click **Close** to dismiss the migration wizard. 
+1.  everything goes as planned, you will see the **Operation Complete** dialog box with the **Result** being **Success** for all activities. Click **Close** to dismiss the migration wizard. 
 
 	![Viewing the migration results](Images/image016.png?raw=true)
 
