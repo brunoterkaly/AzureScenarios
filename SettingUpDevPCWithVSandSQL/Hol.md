@@ -7,7 +7,7 @@
 
 This next section is about getting set up with Azure Virtual Machine that includes **Visual Studio 2013 Ultimate RC** and **SQL Server 2012 Express**. This will be the starting point for other labs.
 
-In this hands-on lab, you will explore the basic elements of setting up an **Windows Azure Virtual Machine** using the Windows Azure Gallery for Vitual Machines. Once a basic virtual machine has been setup, we will add **SQL Server 2012 Express**.
+In this hands-on lab, you will explore the basic elements of setting up an **Windows Azure Virtual Machine** using the Windows Azure Gallery for Virtual Machines. Once a basic virtual machine has been setup, we will add **SQL Server 2012 Express**.
 
 The goal is that you will have an equivalent infrastructure that a developer would need. You will have **Visual Studio 2013 Ultimate RC** and **SQL Server 2012 Express** that you can use to work with an existing MVC4 Sample application. 
 
@@ -46,7 +46,7 @@ This hands-on lab includes the following exercises:
 - [Exercise 1: Downloading and installing **SQL Server 2012 Express**](#Exercise1)
 
 <a name="GettingStarted"></a>
-### Getting Started: Creating an MVC 4 Application using Entity Framework Code First ###
+### Getting Started: Creating an Azure Virtual Machine using the Windows Azure Virtual Image Gallery ###
 
 In this section, will connect to the virtual machine using **Remote Desktop**. You will configure **SQL Server 2012 Express** so that the Virtual Machine will have both **Visual Studio 2013 Ultimate RC** and **SQL Server 2012 Express**.
 
